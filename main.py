@@ -10,8 +10,11 @@ import os, sys
 os.chdir("/home/samuelpx/Documents/Projects/python/LoR-Scraping")
 
 url = "https://americas.api.riotgames.com/lor/ranked/v1/leaderboards"  # Replace with your API endpoint URL
+
+API_KEY = os.environ.get('RIOT_KEY')
+
 headers = {
-    "X-Riot-Token": "RGAPI-d2eac272-55c2-4a03-bc7e-a3152f61b415",  # Replace with your authentication token
+    "X-Riot-Token": f'{API_KEY}',  # Replace with your authentication token
 }
 # Checking if previous data exists:
 SCRIPT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
