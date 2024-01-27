@@ -12,7 +12,7 @@ os.chdir("/home/samuelpx/Documents/Projects/python/LoR-Scraping")
 
 url = "https://americas.api.riotgames.com/lor/ranked/v1/leaderboards"  # Replace with your API endpoint URL
 
-load_dotenv()
+load_dotenv('/home/samuelpx/Documents/Projects/python/LoR-Scraping')
 
 API_KEY = os.getenv('RIOT_KEY')
 
