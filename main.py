@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import requests
+from dotenv import load_dotenv
 from datetime import datetime
 import pandas as pd
 import numpy as np
@@ -11,7 +12,9 @@ os.chdir("/home/samuelpx/Documents/Projects/python/LoR-Scraping")
 
 url = "https://americas.api.riotgames.com/lor/ranked/v1/leaderboards"  # Replace with your API endpoint URL
 
-API_KEY = os.environ.get('RIOT_KEY')
+load_dotenv()
+
+API_KEY = os.getenv('RIOT_KEY')
 
 headers = {
     "X-Riot-Token": f'{API_KEY}',  # Replace with your authentication token
