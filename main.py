@@ -12,9 +12,11 @@ os.chdir("/home/samuelpx/Documents/Projects/python/LoR-Scraping")
 
 url = "https://americas.api.riotgames.com/lor/ranked/v1/leaderboards"  # Replace with your API endpoint URL
 
-load_dotenv('/home/samuelpx/Documents/Projects/python/LoR-Scraping')
+load_dotenv('/home/samuelpx/Documents/Projects/python/LoR-Scraping/.env')
 
 API_KEY = os.getenv('RIOT_KEY')
+
+print(f'DEBUG {API_KEY}')
 
 headers = {
     "X-Riot-Token": f'{API_KEY}',  # Replace with your authentication token
