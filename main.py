@@ -6,20 +6,21 @@ from datetime import datetime
 import pandas as pd
 import numpy as np
 import json
-import os, sys
+import os
+import sys
 
 os.chdir("/home/samuelpx/Documents/Projects/python/LoR-Scraping")
 # Replace with your API endpoint URL
 url = "https://americas.api.riotgames.com/lor/ranked/v1/leaderboards"
 
-load_dotenv('/home/samuelpx/Documents/Projects/python/LoR-Scraping/.env')
+load_dotenv("/home/samuelpx/Documents/Projects/python/LoR-Scraping/.env")
 
-API_KEY = os.getenv('RIOT_KEY')
+API_KEY = os.getenv("RIOT_KEY")
 
-print(f'DEBUG {API_KEY}')
+print(f"DEBUG {API_KEY}")
 
 headers = {
-    "X-Riot-Token": f'{API_KEY}',  # Replace with your authentication token
+    "X-Riot-Token": f"{API_KEY}",  # Replace with your authentication token
 }
 # Checking if previous data exists:
 SCRIPT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
@@ -76,18 +77,18 @@ else:
                 print("\nThese data-frames are the same!!")
                 sys.exit(0)
 
-            print(f'\n This is the "normalized" variable\n')
+            print('\n This is the "normalized" variable\n')
             print(normalized, "\n")
-            print(f' This is the "old_data" variable\n')
+            print(' This is the "old_data" variable\n')
             print(old_data, "\n")
-            print(f' This is the "temporary_old_data" variable\n')
+            print(' This is the "temporary_old_data" variable\n')
             print(temporary_old_data, "\n")
 
             # Joining data so we can save & update
             joined_data = pd.concat([old_data, normalized])
-            print(f' This is "joined_data.describe()" \n')
+            print(' This is "joined_data.describe()" \n')
             print(joined_data.describe(), "\n")
-            print(f' This is "joined_data.info()" \n')
+            print(' This is "joined_data.info()" \n')
             print(joined_data.info(), "\n")
             print("\n\n Sucessfully updated the csv with new data!")
             normalized.to_csv("transformed_data_temporary.csv")
