@@ -9,8 +9,8 @@ import json
 import os, sys
 
 os.chdir("/home/samuelpx/Documents/Projects/python/LoR-Scraping")
-
-url = "https://americas.api.riotgames.com/lor/ranked/v1/leaderboards"  # Replace with your API endpoint URL
+# Replace with your API endpoint URL
+url = "https://americas.api.riotgames.com/lor/ranked/v1/leaderboards"
 
 load_dotenv('/home/samuelpx/Documents/Projects/python/LoR-Scraping/.env')
 
@@ -92,9 +92,7 @@ else:
             print("\n\n Sucessfully updated the csv with new data!")
             normalized.to_csv("transformed_data_temporary.csv")
 
-            # Creating the final finals, HTML and CSV 
-            # joined_data.to_html("transfomred_data.html")
-            # NOT A GOOD IDEA ^ ^ ^ ^ ^ ^ ^ ^
+            # Creating the final CSV
             joined_data.to_csv("transformed_data.csv")
 
         else:
