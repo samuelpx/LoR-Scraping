@@ -90,7 +90,7 @@ else:
             print(joined_data.describe(), "\n")
             print(' This is "joined_data.info()" \n')
             print(joined_data.info(), "\n")
-            print("\n\n Sucessfully updated the csv with new data!")
+            print("\n\n Sucessfully updated the parquet file with new data!")
             normalized.to_parquet("transformed_data_temporary.parquet")
 
             # Creating the final CSV
