@@ -24,7 +24,7 @@ headers = {
 }
 # Checking if previous data exists:
 SCRIPT_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
-FILE_NAME = "transformed_data.csv"
+FILE_NAME = "transformed_data.parquet"
 OLD_FILE_PATH = os.path.join(SCRIPT_DIRECTORY, FILE_NAME)
 print(OLD_FILE_PATH)
 
@@ -41,9 +41,9 @@ if not os.path.isfile(OLD_FILE_PATH):
             for i in data_pandas["players"]:
                 i["date"] = datetime.today().strftime("%d-%m-%Y, %Hh")
             normalized = pd.json_normalize(data_pandas["players"])
-            normalized.to_csv("transformed_data.csv")
-            normalized.to_csv("transformed_data_temporary.csv")
-            print("No old data found! Initializing csv.")
+            normalized.to_parquet("transformed_data.parquet")
+            normalized.to_parquet("transformed_data_temporary.parquet")
+            print("No old data found! Initializing parquet.")
         else:
             # Print an error message for unsuccessful requests
             print(f"Error: {response.status_code} - {response.text}")
@@ -59,9 +59,9 @@ else:
         # Check if the request was successful (status code 200)
         if response.status_code == 200:
             # Load up old data
-            old_data = pd.read_csv("transformed_data.csv", index_col=0)
-            temporary_old_data = pd.read_csv(
-                "transformed_data_temporary.csv", index_col=0
+            old_data = pd.read_parquet("transformed_data.parquet")
+            temporary_old_data = pd.read_parquet(
+                "transformed_data_temporary.parquet"
             )
 
             # Parse and use the response data
@@ -91,10 +91,10 @@ else:
             print(' This is "joined_data.info()" \n')
             print(joined_data.info(), "\n")
             print("\n\n Sucessfully updated the csv with new data!")
-            normalized.to_csv("transformed_data_temporary.csv")
+            normalized.to_parquet("transformed_data_temporary.parquet")
 
             # Creating the final CSV
-            joined_data.to_csv("transformed_data.csv")
+            joined_data.to_parquet("transformed_data.parquet")
 
         else:
             # Print an error message for unsuccessful requests
