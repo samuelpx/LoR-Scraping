@@ -41,6 +41,7 @@ if not os.path.isfile(OLD_FILE_PATH):
             for i in data_pandas["players"]:
                 i["date"] = datetime.today().strftime("%d-%m-%Y, %Hh")
             normalized = pd.json_normalize(data_pandas["players"])
+            # Initialize permanent dataset and temporary dataset
             normalized.to_parquet("transformed_data.parquet")
             normalized.to_parquet("transformed_data_temporary.parquet")
             print("No old data found! Initializing parquet.")
@@ -60,9 +61,7 @@ else:
         if response.status_code == 200:
             # Load up old data
             old_data = pd.read_parquet("transformed_data.parquet")
-            temporary_old_data = pd.read_parquet(
-                "transformed_data_temporary.parquet"
-            )
+            temporary_old_data = pd.read_parquet("transformed_data_temporary.parquet")
 
             # Parse and use the response data
             data = response.json()
