@@ -1,0 +1,7 @@
+- Create a columnar template for exposition
+
+- Create streamlit app
+
+- Introduce sorting for steamlit app
+
+- Make Highlight leaderboards (Highest average ranking (over some minimal leaderboard presence))
