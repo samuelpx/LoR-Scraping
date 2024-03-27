@@ -44,5 +44,24 @@
             {% endfor %}
         </tbody>
     </table>
+    <h1>Max rank and LP for players</h1>
+    <table>
+        <thead>
+            <tr>
+                {% for max_column in max_columns %}
+                    <th>{{ max_column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for max_row in max_rows %}
+                <tr>
+                    {% for value in max_row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
