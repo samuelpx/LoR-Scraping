@@ -7,7 +7,7 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
 
-@app.get("/table", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse)
 async def show_table(request: Request):
 
 
