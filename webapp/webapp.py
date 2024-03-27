@@ -21,9 +21,16 @@ async def show_table(request: Request):
     average_columns = average.columns
     average_rows = average.sort_values(by="rank", ascending=True).head(30).values.tolist()
 
+    max = df.groupby('name').agg({'rank':'min', 'lp': 'max'}).reset_index()
+    
+    max_columns = max.columns
+    max_rows = max.sort_values(by=['rank', 'lp'], ascending=[True, True]).head(30).values.tolist()
+
     return templates.TemplateResponse("table.html", {"request": request,
                                                      "columns": columns,
                                                      "rows": rows,
                                                      "average_rows": average_rows,
-                                                     "average_columns": average_columns})
+                                                     "average_columns": average_columns,
+                                                     "max_columns": max_columns,
+                                                     "max_rows": max_rows})
 
