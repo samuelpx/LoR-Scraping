@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+'''
+Program to correctly transform any response.json into parquet,
+used mostly for when unknown errors make reading transformed_data_temporary.parquet impossible
+'''
+
 from datetime import datetime
 import pandas as pd
 
