@@ -14,7 +14,16 @@ async def show_table(request: Request):
     df = pd.read_csv("transformed_data.csv")
 
     columns = df.columns
-    rows = df.values.tolist()
+    rows = df.head(30).values.tolist()
 
-    return templates.TemplateResponse("table.html", {"request": request, "columns": columns, "rows": rows})
+    average = df.groupby('name')['rank'].mean().reset_index()
+
+    average_columns = average.columns
+    average_rows = average.sort_values(by="rank", ascending=True).head(30).values.tolist()
+
+    return templates.TemplateResponse("table.html", {"request": request,
+                                                     "columns": columns,
+                                                     "rows": rows,
+                                                     "average_rows": average_rows,
+                                                     "average_columns": average_columns})
 

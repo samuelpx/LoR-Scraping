@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTMX Table Example</title>
+    <title>LoR Rankings</title>
 </head>
 <body>
-    <h1>HTMX Table Example</h1>
+    <h1>First 30 of the DF</h1>
     <table>
         <thead>
             <tr>
@@ -19,6 +19,25 @@
             {% for row in rows %}
                 <tr>
                     {% for value in row %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h1>Average rank for players</h1>
+    <table>
+        <thead>
+            <tr>
+                {% for average_column in average_columns %}
+                    <th>{{ average_column }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for average_row in average_rows %}
+                <tr>
+                    {% for value in average_row %}
                         <td>{{ value }}</td>
                     {% endfor %}
                 </tr>
