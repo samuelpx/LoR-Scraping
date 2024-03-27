@@ -10,6 +10,7 @@ import os
 import sys
 
 os.chdir("/home/samuelpx/Documents/Projects/python/LoR-Scraping")
+
 # Replace with your API endpoint URL
 url = "https://americas.api.riotgames.com/lor/ranked/v1/leaderboards"
 
